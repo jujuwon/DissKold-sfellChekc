@@ -1,5 +1,6 @@
 import discord
-import re
+import os
+from dotenv import load_dotenv
 
 class chatbot(discord.Client):
     # 프로그램이 처음 실행되었을 때 초기 구성
@@ -35,5 +36,8 @@ class chatbot(discord.Client):
 if __name__ == "__main__":
     # 객체를 생성
     client = chatbot()
+    # 토큰 불러오기
+    load_dotenv()
+    token = os.getenv("TOKEN")
     # TOKEN 값을 통해 로그인하고 봇을 실행
-    client.run("ODgwNDg0MTk3NTcwMDYwMzI4.YSe8zw.Bm--hwk7Vvd35M0MuMY2XQHX5G8")
+    client.run(token)
