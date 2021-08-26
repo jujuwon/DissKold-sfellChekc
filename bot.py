@@ -1,6 +1,8 @@
 import discord
 import re
 
+from discord import activity
+
 class chatbot(discord.Client):
     # 프로그램이 처음 실행되었을 때 초기 구성
     async def on_ready(self):
@@ -24,7 +26,7 @@ class chatbot(discord.Client):
         if message.content == "안녕":
             # 현재 채널을 받아옴
             channel = message.channel
-            # 답변 내용 구성
+            # 발신자 태그 + 답변 내용 구성
             msg = "<@{}> ".format(message.author.id) + "안녕~~"
             # msg에 지정된 내용대로 메시지를 전송
             await channel.send(msg)
