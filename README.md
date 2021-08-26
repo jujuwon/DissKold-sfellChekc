@@ -9,3 +9,14 @@
 -   [ ] 정규표현식 모듈화
 -   [ ] 정규표현식 유형 추가
 -   [ ] 테스트
+
+### 사용 방법
+
+```sh
+(Linux 기준)
+python3.5 이상 버전 필요
+python3 -m pip install -U discord.py
+git clone
+python3 bot.py
+.env 파일에 토큰값 입력하고 사용
+```
