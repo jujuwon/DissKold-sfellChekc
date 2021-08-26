@@ -1,8 +1,6 @@
 import discord
 import re
 
-from discord import activity
-
 class chatbot(discord.Client):
     # 프로그램이 처음 실행되었을 때 초기 구성
     async def on_ready(self):
