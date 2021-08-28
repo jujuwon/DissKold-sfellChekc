@@ -35,7 +35,7 @@ class chatbot(discord.Client):
             return None
         '''
 
-        flag = 0
+        flag = False
         
         msg, flag = regExp.check(message.content)
         if flag:
