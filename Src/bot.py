@@ -1,7 +1,7 @@
 import discord
 import os
 from dotenv import load_dotenv
-import firstStepReg
+from spellcheck import firstStepReg
 
 class chatbot(discord.Client):
     # 프로그램이 처음 실행되었을 때 초기 구성
