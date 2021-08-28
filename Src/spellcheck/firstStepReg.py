@@ -13,11 +13,11 @@ def init():
 
     return fileName
 
-def checkReg(msg):
+def checkWord(msg):
     
     fileName = init()
 
-    flag = False
+    count = 0
     # 파일 읽기
     with open(fileName, 'r', encoding='utf-8') as f:
         data = csv.reader(f)
@@ -25,7 +25,7 @@ def checkReg(msg):
         for line in data:
             if re.findall(line[0], msg):
                 msg = msg.replace(line[0], line[1])
-                flag = True
+                count += 1
 
         '''
         if re.findall(r"되(?=[^가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z0-9])$|되$", msg):
@@ -33,4 +33,4 @@ def checkReg(msg):
             flag = True
         '''
 
-    return msg, flag
+    return msg, count
