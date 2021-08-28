@@ -34,6 +34,5 @@ DissKold-sfellChekc
     │  bot.py
     │
     └─spellcheck
-            firstStepReg.py
             regExp.py
 ```
