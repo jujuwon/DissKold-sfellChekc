@@ -15,8 +15,10 @@ def checkReg(msg):
                 msg = msg.replace(line[0], line[1])
                 flag = True
 
+        '''
         if re.findall(r"되(?=[^가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z0-9])$|되$", msg):
             msg = re.sub('되(?=[^가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z0-9]$)|되$',"돼",msg)
             flag = True
+        '''
 
     return msg, flag
