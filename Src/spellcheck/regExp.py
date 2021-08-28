@@ -12,17 +12,24 @@ regs = [
     '(?<=뭐)던',
     '안절부절(?!\s*못)',
     '뵈(?=요?[^가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z0-9]*$)',
-    '봬(?=[가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z0-9])(?=[^요])'
+    '봬(?=[가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z0-9])(?=[^요])',
+    '(?<=\d)연도|(?<=몇\s)연도', '(?<!\d)(?<!몇\s)년도'
 ]
 corrects = [
     '안', '되', '된', '됨', '될', '됩', '됐', '돼',
-    '어떡해', '어떻게', '든', '안절부절못', '봬', '뵈'
+    '어떡해', '어떻게', '든', '안절부절못', '봬', '뵈', '년도', '연도'
 ]
 patterns = []
 legnth = len(corrects)
 
 # 2단계 ONE TIME 유형
 oneTimeReg = '(?<!뭐)든'
+
+# 2단계 종성 유형
+jsRegs = [
+    '껄', '께'
+]
+jsPatterns = []
 
 
 def init():
@@ -42,6 +49,26 @@ def init():
 
     global oneTimePattern
     oneTimePattern = re.compile(oneTimeReg)
+
+    for reg in jsRegs:
+        jsPatterns.append(re.compile(reg))
+
+
+# 종성 체크 함수
+def chk_jongseong(word):
+    flag = 0
+    if '가'<=word<='힣':
+        ch1 = (ord(word) - ord('가'))//588
+        ch2 = ((ord(word) - ord('가')) - (588*ch1)) // 28
+        ch3 = (ord(word) - ord('가')) - (588*ch1) - 28*ch2
+        if ch3 == 8: # ㄹ
+            flag += 1
+        elif ch3 == 4: # ㄴ
+            flag += 2
+        elif ch3 == 0: # 종성 없음
+            flag += 3
+    
+    return flag
 
 
 def check(msg):
@@ -72,6 +99,9 @@ def check(msg):
         msg = re.sub(oneTimePattern, '던', msg)
         oneTimePatternFlag = True
 
+    # 2단계 종성 유형 체크
+
+    
 
     flag = csvFlag or searchPatternFlag or oneTimePatternFlag
 
