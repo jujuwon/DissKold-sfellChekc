@@ -22,24 +22,14 @@ class chatbot(discord.Client):
         # SENDER가 BOT일 경우 반응을 하지 않도록 한다.
         if message.author.bot:
             return None
-        
-        '''
-        # message.content = message의 내용
-        if message.content == "안녕":
-            # 현재 채널을 받아옴
-            channel = message.channel
-            # 발신자 태그 + 답변 내용 구성
-            msg = "<@{}> ".format(message.author.id) + "안녕~~"
-            # msg에 지정된 내용대로 메시지를 전송
-            await channel.send(msg)
-            return None
-        '''
 
+        # 패턴 매칭 검사
         flag = False
         
         msg, flag = regExp.check(message.content)
         if flag:
             channel = message.channel
+            # 사용자에게 올바른 메시지 알림
             msg = "<@{}> ".format(message.author.id) + '"' + msg + '"(이)가 정확한 표현입니다'
             await channel.send(msg)
             return None
