@@ -1,7 +1,7 @@
 import discord
 import os
 from dotenv import load_dotenv
-from spellcheck import firstStepReg
+from spellcheck import regExp
 
 class chatbot(discord.Client):
     # 프로그램이 처음 실행되었을 때 초기 구성
@@ -35,7 +35,7 @@ class chatbot(discord.Client):
         '''
 
         flag = 0
-        msg, flag = firstStepReg.checkReg(message.content)
+        msg, flag = regExp.check(message.content)
         if flag:
             channel = message.channel
             msg = "<@{}> ".format(message.author.id) + '"' + msg + '"가 맞는 말입니다'
