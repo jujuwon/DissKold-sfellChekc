@@ -20,3 +20,21 @@ git clone
 python3 bot.py
 .env 파일에 토큰값 입력하고 사용
 ```
+
+### 디렉토리 구조
+```bash
+DissKold-sfellChekc
+│  .env
+│  .gitignore
+│  README.md
+│
+├─Data
+│      data1.csv
+│
+└─Src
+    │  bot.py
+    │
+    └─spellcheck
+            firstStepReg.py
+            regExp.py
+```
