@@ -1,6 +1,7 @@
 import discord
 import os
 from dotenv import load_dotenv
+import firstStepReg
 
 class chatbot(discord.Client):
     # 프로그램이 처음 실행되었을 때 초기 구성
@@ -21,6 +22,7 @@ class chatbot(discord.Client):
         if message.author.bot:
             return None
         
+        '''
         # message.content = message의 내용
         if message.content == "안녕":
             # 현재 채널을 받아옴
@@ -28,6 +30,15 @@ class chatbot(discord.Client):
             # 발신자 태그 + 답변 내용 구성
             msg = "<@{}> ".format(message.author.id) + "안녕~~"
             # msg에 지정된 내용대로 메시지를 전송
+            await channel.send(msg)
+            return None
+        '''
+
+        flag = 0
+        msg, flag = firstStepReg.checkReg(message.content)
+        if flag:
+            channel = message.channel
+            msg = "<@{}> ".format(message.author.id) + '"' + msg + '"가 맞는 말입니다'
             await channel.send(msg)
             return None
 
