@@ -12,6 +12,7 @@ class chatbot(discord.Client):
         # 계정 상태를 변경한다.
         # 온라인 상태, game 중으로 설정
         await client.change_presence(status=discord.Status.online, activity=game)
+        regExp.init()
 
         # 준비가 완료되면 콘솔 창에 "READY!"라고 표시
         print("READY")
@@ -35,10 +36,11 @@ class chatbot(discord.Client):
         '''
 
         flag = 0
+        
         msg, flag = regExp.check(message.content)
         if flag:
             channel = message.channel
-            msg = "<@{}> ".format(message.author.id) + '"' + msg + '"가 맞는 말입니다'
+            msg = "<@{}> ".format(message.author.id) + '"' + msg + '"(이)가 정확한 표현입니다'
             await channel.send(msg)
             return None
 

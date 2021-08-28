@@ -1,11 +1,14 @@
-from spellcheck import firstStepReg
+from spellcheck import matchWord
+
+def init():
+    matchWord.init()
 
 def check(msg):
 
     flag = False
-    msg, fStepCount = firstStepReg.checkWord(msg)
+    msg, matchCount = matchWord.checkWord(msg)
 
-    if fStepCount > 0 :
+    if matchCount > 0 :
         flag = True
 
     return msg, flag

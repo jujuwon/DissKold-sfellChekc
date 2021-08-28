@@ -9,13 +9,10 @@ def init():
     parentDir = os.path.dirname(parentDir)
 
     dataPath = os.path.join(parentDir, 'Data')
+    global fileName
     fileName = dataPath + '\data1.csv'
 
-    return fileName
-
 def checkWord(msg):
-    
-    fileName = init()
 
     count = 0
     # 파일 읽기
