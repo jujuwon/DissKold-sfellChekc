@@ -24,7 +24,6 @@ python3 bot.py
 ### 디렉토리 구조
 ```bash
 DissKold-sfellChekc
-│  .env
 │  .gitignore
 │  README.md
 │
