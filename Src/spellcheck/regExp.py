@@ -168,3 +168,4 @@ def check(msg):
     flag = csvFlag or searchPatternFlag or jsPatternsFlag
 
     return msg, flag
+    
